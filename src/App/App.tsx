@@ -6,6 +6,7 @@ import { RootState } from '../store';
 import { getInitialData } from '../store/commonSlice';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
+import 'primeicons/primeicons.css';
 
 export const App: FC = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,6 @@ export const App: FC = () => {
 
   return (
     <>
-      Welcome
       <Table
         values={values}
         cols={cols}
