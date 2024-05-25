@@ -34,7 +34,13 @@ export const Actions: FC<ActionsProps> = ({ id }) => {
         visible={showModal}
         onClose={handleShowModal(false)}
       >
-        {init && <UpdateTableValueForm init={init} />}
+        {init && (
+          <UpdateTableValueForm
+            init={init}
+            id={id}
+            closeModal={handleShowModal(false)}
+          />
+        )}
       </Modal>
       <Button
         onClick={handleShowModal(true)}

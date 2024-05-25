@@ -1,8 +1,10 @@
 export type UpdateTableValueFormProps = {
   init: Init;
+  id: number;
+  closeModal: () => void;
 };
 
-type Init = {
+export type Init = {
   name: string;
   category: string[];
 };

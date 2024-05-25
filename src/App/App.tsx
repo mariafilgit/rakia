@@ -4,6 +4,7 @@ import { cols } from './App.columns';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { getInitialData } from '../store/commonSlice';
+import '../index.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';

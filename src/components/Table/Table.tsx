@@ -5,10 +5,7 @@ import { TableProps } from './Table.types';
 
 export const Table: FC<TableProps> = ({ values, cols }) => {
   return (
-    <DataTable
-      value={values}
-      tableStyle={{ minWidth: '50rem' }}
-    >
+    <DataTable value={values}>
       {cols.map((col) => (
         <Column
           key={col.header}
