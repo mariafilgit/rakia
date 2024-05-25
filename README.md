@@ -18,7 +18,7 @@ In this app you can see a simple table component. You can sort, update or delete
 - Clone repository
   `git clone https://github.com/mariafilgit/rakia.git`
 
-- Install all dependencies use `npm`
+- Install all dependencies
   `npm i`
 
 - To run project
