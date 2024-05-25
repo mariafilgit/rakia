@@ -1,6 +1,6 @@
+import { FC } from 'react';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
-import { FC } from 'react';
 import { TableProps } from './Table.types';
 
 export const Table: FC<TableProps> = ({ values, cols }) => {
@@ -15,6 +15,7 @@ export const Table: FC<TableProps> = ({ values, cols }) => {
           field={col.field}
           header={col.header}
           body={col?.body}
+          sortable={col?.sortable}
         ></Column>
       ))}
     </DataTable>
