@@ -3,7 +3,7 @@ import { ActionsProps } from './Actions.types';
 import { Button } from 'primereact/button';
 import { Modal } from './Modal/Modal';
 import { UpdateTableValueForm } from '../../forms';
-import { DataDto } from '../../types';
+import { CatalogDTO } from '../../types';
 import { dataApi } from '../../store/data.api';
 import { transformDataToString } from '../../helpers/transformDataToString';
 
@@ -12,7 +12,7 @@ export const Actions: FC<ActionsProps> = ({ n, id }) => {
   const [deleteData] = dataApi.useDeleteDataMutation();
 
   const [showModal, setShowModal] = useState(false);
-  const [init, setInit] = useState<DataDto>();
+  const [init, setInit] = useState<CatalogDTO>();
 
   const handleGetData = async () => {
     try {
