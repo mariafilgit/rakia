@@ -1,9 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import commonReducer from './commonSlice';
 import { dataApi } from './data.api';
 
 const rootReducer = combineReducers({
-  common: commonReducer,
   [dataApi.reducerPath]: dataApi.reducer,
 });
 
