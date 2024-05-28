@@ -1,19 +1,11 @@
 {
-  "data": [
-    {
-      "id": 1,
-      "name": "Alan Wake",
-      "category": ["TPS", "Adventure", "Horror"]
-    },
-    {
-      "id": 2,
-      "name": "Jason Bourne",
-      "category": ["Movie", "Thriller", "Spy"]
-    },
-    {
-      "id": 3,
-      "name": "Bruce Wayne",
-      "category": ["Batman", "Philanthropist", "Orphan"]
-    }
-  ]
+  "id": 1,
+  "n": "Alan Wake",
+  "c": ["TPS", "Adventure", "Horror"],
+  "id": 1,
+  "n": "Jason Bourne",
+  "c": ["Movie", "Thriller", "Spy"],
+  "id": "1",
+  "n": "Bruce Wayne",
+  "c": ["Batman", "Philanthropist", "Orphan"]
 }

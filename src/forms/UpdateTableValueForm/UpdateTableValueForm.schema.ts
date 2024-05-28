@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
 export const updateTableValueSchema = Yup.object().shape({
-  name: Yup.string().min(10).required(),
-  category: Yup.array().of(Yup.string()),
+  n: Yup.string().min(10).required(),
+  c: Yup.array().of(Yup.string()),
 });

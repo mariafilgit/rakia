@@ -1,3 +1,3 @@
 export type ActionsProps = {
-  id: number;
+  id: number | string;
 };

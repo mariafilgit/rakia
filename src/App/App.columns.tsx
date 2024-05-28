@@ -2,12 +2,12 @@ import { Actions } from '../components';
 
 export const cols = [
   {
-    field: 'name',
+    field: 'n',
     header: 'Name',
     sortable: true,
   },
   {
-    field: 'category',
+    field: 'c',
     header: 'Category',
     sortable: true,
   },

@@ -1,6 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { DataDto } from '../types';
-import * as values from './init.json';
 
 export interface CommonState {
   data: DataDto[];
@@ -17,7 +16,7 @@ export const commonSlice = createSlice({
   initialState,
   reducers: {
     getInitialData: (state) => {
-      state.data = values.data;
+      state.data = [];
     },
     updateData: (state, action: PayloadAction<DataDto[]>) => {
       state.isLoaded = false;

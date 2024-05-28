@@ -1,36 +1,44 @@
 import { FC, useEffect, useMemo } from 'react';
 import { Table } from '../components';
 import { cols } from './App.columns';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../store';
-import { getInitialData } from '../store/commonSlice';
-import '../index.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
+import { dataApi } from '../store/data.api';
+import { transformString } from '../helpers/transformString';
+import '../index.css';
 
 export const App: FC = () => {
-  const dispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.common.data);
+  const [getVals, { data }] = dataApi.useLazyGetDataQuery();
+
+  const handleGetData = async () => {
+    try {
+      await getVals(null);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
-    dispatch(getInitialData());
+    handleGetData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const values = useMemo(() => {
-    return [...data].map((value) => ({
-      ...value,
-      category: value?.category?.join(', '),
-    }));
+    if (!data?.values || !data?.values?.length) {
+      return [];
+    }
+    return transformString(data.values);
   }, [data]);
 
   return (
     <>
-      <Table
-        values={values}
-        cols={cols}
-      />
+      {values && (
+        <Table
+          values={values}
+          cols={cols}
+        />
+      )}
     </>
   );
 };

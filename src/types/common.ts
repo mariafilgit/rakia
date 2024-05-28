@@ -1,5 +1,5 @@
 export interface DataDto {
-  id: number;
-  name: string;
-  category: string[];
+  id: number | string;
+  n: string;
+  c: string[];
 }

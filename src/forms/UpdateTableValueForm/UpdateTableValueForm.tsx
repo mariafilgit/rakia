@@ -46,17 +46,17 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, 
             <InputText
               id="name"
               className="w-full md:w-full mb-4"
-              value={values['name']}
+              value={values['n']}
               onChange={handleChange}
               type={'text'}
               required
               placeholder="Name"
             />
-            <FormError text={errors.name} />
+            <FormError text={errors.n} />
 
             <MultiSelect
               id="category"
-              value={values['category']}
+              value={values['c']}
               onChange={handleChange}
               options={options}
               optionLabel="name"
@@ -64,7 +64,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, 
               maxSelectedLabels={5}
               className="w-full md:w-full mb-4"
             />
-            <FormError text={errors.category?.toString()} />
+            <FormError text={errors.c?.toString()} />
 
             <footer className="flex float-end pt-3">
               <Button
