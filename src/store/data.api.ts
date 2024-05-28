@@ -17,7 +17,7 @@ export const dataApi = createApi({
         transformResponse: (data: { values: string; id: number }[]) => {
           return transformString(data?.[0].values);
         },
-        // providesTags: ['Data'],
+        providesTags: ['Data'],
       }),
       updateData: build.mutation<{ values: string }, { values: string }>({
         query: (values) => ({
@@ -25,7 +25,7 @@ export const dataApi = createApi({
           method: 'put',
           body: values,
         }),
-        // invalidatesTags: ['Data'],
+        invalidatesTags: ['Data'],
       }),
     };
   },
