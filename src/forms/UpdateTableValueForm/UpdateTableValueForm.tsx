@@ -30,7 +30,9 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
     });
 
     try {
-      await updateData({ values: JSON.stringify(newData) });
+      let transformResult = JSON.stringify(newData).replace(/[}{]/g, '');
+      transformResult = transformResult.substring(1, transformResult.length - 1);
+      await updateData({ values: `{${transformResult}}` });
     } catch (e) {
       console.error(e);
     }

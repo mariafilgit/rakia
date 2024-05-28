@@ -6,6 +6,7 @@ export const dataApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3000/data',
   }),
+  tagTypes: ['Data'],
   endpoints: (build) => {
     return {
       getData: build.query({
@@ -16,6 +17,7 @@ export const dataApi = createApi({
         transformResponse: (data: { values: string; id: number }[]) => {
           return transformString(data?.[0].values);
         },
+        // providesTags: ['Data'],
       }),
       updateData: build.mutation<{ values: string }, { values: string }>({
         query: (values) => ({
@@ -23,6 +25,7 @@ export const dataApi = createApi({
           method: 'put',
           body: values,
         }),
+        // invalidatesTags: ['Data'],
       }),
     };
   },
