@@ -28,7 +28,7 @@ export const App: FC = () => {
       return [];
     }
 
-    return [...data].map((item) => ({
+    return data.map((item) => ({
       ...item,
       c: item.c.join(', '),
     }));
