@@ -70,7 +70,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
           onSubmit={handleSubmit}
           noValidate
         >
-          <div>
+          <div className="space-y-1.5">
             <InputText
               id="n"
               className="w-full md:w-full mb-4"
