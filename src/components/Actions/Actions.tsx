@@ -47,21 +47,7 @@ export const Actions: FC<ActionsProps> = ({ n, id }) => {
   };
 
   return (
-    <div className="flex">
-      <Modal
-        visible={showModal}
-        onClose={handleShowModal(false)}
-      >
-        {init && data && (
-          <UpdateTableValueForm
-            init={init}
-            id={id}
-            name={n}
-            data={data}
-            closeModal={handleShowModal(false)}
-          />
-        )}
-      </Modal>
+    <div className="flex space-x-4">
       <Button
         onClick={handleShowModal(true)}
         icon="pi pi-user-edit"
@@ -79,6 +65,20 @@ export const Actions: FC<ActionsProps> = ({ n, id }) => {
         severity="danger"
         aria-label="Delete"
       />
+      <Modal
+        visible={showModal}
+        onClose={handleShowModal(false)}
+      >
+        {init && data && (
+          <UpdateTableValueForm
+            init={init}
+            id={id}
+            name={n}
+            data={data}
+            closeModal={handleShowModal(false)}
+          />
+        )}
+      </Modal>
     </div>
   );
 };
