@@ -8,6 +8,7 @@ import { dataApi } from '../../store/data.api';
 
 export const Actions: FC<ActionsProps> = ({ n, id }) => {
   const [getVals, { data }] = dataApi.useLazyGetDataQuery();
+  const [deleteData] = dataApi.useDeleteDataMutation();
 
   const [showModal, setShowModal] = useState(false);
   const [init, setInit] = useState<DataDto>();
@@ -33,9 +34,16 @@ export const Actions: FC<ActionsProps> = ({ n, id }) => {
     setShowModal(status);
   };
 
-  const onDelete = () => {
-    // const result = data?.filter((item) => item.n !== n);
-    // dispatch(updateData(result));
+  const onDelete = async () => {
+    const newData = data?.filter((item) => item.n !== n);
+
+    try {
+      let transformResult = JSON.stringify(newData).replace(/[}{]/g, '');
+      transformResult = transformResult.substring(1, transformResult.length - 1);
+      await deleteData({ values: `{${transformResult}}` });
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (

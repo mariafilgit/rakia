@@ -27,6 +27,14 @@ export const dataApi = createApi({
         }),
         invalidatesTags: ['Data'],
       }),
+      deleteData: build.mutation<{ values: string }, { values: string }>({
+        query: (values) => ({
+          url: '/1',
+          method: 'put',
+          body: values,
+        }),
+        invalidatesTags: ['Data'],
+      }),
     };
   },
 });
