@@ -19,13 +19,12 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
 
   const onFormSubmit = async (values: Init) => {
     const newData = data.map((item) => {
-      if (item.n !== name) {
-        return item;
-      }
-      return {
-        ...values,
-        id,
-      };
+      return item.n !== name
+        ? item
+        : {
+            ...values,
+            id,
+          };
     });
 
     try {
