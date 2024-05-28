@@ -5,7 +5,6 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
 import { dataApi } from '../store/data.api';
-import { transformString } from '../helpers/transformString';
 import '../index.css';
 
 export const App: FC = () => {
@@ -25,10 +24,14 @@ export const App: FC = () => {
   }, []);
 
   const values = useMemo(() => {
-    if (!data?.values || !data?.values?.length) {
+    if (!data) {
       return [];
     }
-    return transformString(data.values);
+
+    return [...data].map((item) => ({
+      ...item,
+      c: item.c.join(', '),
+    }));
   }, [data]);
 
   return (

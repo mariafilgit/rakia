@@ -1,31 +1,41 @@
 import { FC, useEffect, useState } from 'react';
 import { ActionsProps } from './Actions.types';
 import { Button } from 'primereact/button';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store';
-import { updateData } from '../../store/commonSlice';
 import { Modal } from './Modal/Modal';
 import { UpdateTableValueForm } from '../../forms';
 import { DataDto } from '../../types';
+import { dataApi } from '../../store/data.api';
 
-export const Actions: FC<ActionsProps> = ({ id }) => {
-  const dispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.common.data);
+export const Actions: FC<ActionsProps> = ({ n, id }) => {
+  const [getVals, { data }] = dataApi.useLazyGetDataQuery();
 
   const [showModal, setShowModal] = useState(false);
   const [init, setInit] = useState<DataDto>();
 
+  const handleGetData = async () => {
+    try {
+      await getVals(null);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
-    setInit(data.find((item) => item.id === id));
-  }, [data, id]);
+    handleGetData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setInit(data?.find((item) => item.n === n));
+  }, [data, n]);
 
   const handleShowModal = (status: boolean) => () => {
     setShowModal(status);
   };
 
   const onDelete = () => {
-    const result = data?.filter((item) => item.id !== id);
-    dispatch(updateData(result));
+    // const result = data?.filter((item) => item.n !== n);
+    // dispatch(updateData(result));
   };
 
   return (
@@ -34,10 +44,12 @@ export const Actions: FC<ActionsProps> = ({ id }) => {
         visible={showModal}
         onClose={handleShowModal(false)}
       >
-        {init && (
+        {init && data && (
           <UpdateTableValueForm
             init={init}
             id={id}
+            name={n}
+            data={data}
             closeModal={handleShowModal(false)}
           />
         )}

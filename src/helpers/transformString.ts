@@ -15,12 +15,10 @@ export const transformString = (str: string) => {
       const c = categorySplit[1]
         ?.replace(/[^A-Za-z, ]/g, '')
         .split(',')
-        .filter((string) => !!string.length)
-        .join(', ');
-
+        .filter((string) => !!string.length);
       return [...acc, { id, n, c }];
     },
-    [] as { id: string; n: string; c: string }[]
+    [] as { id: string; n: string; c: string[] }[]
   );
 
   return res;

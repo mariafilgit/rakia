@@ -1,5 +1,5 @@
-import { ColumnBodyOptions } from 'primereact/column';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
+import { ActionsProps } from '../Actions/Actions.types';
 
 export type TableProps = {
   values: Value[];
@@ -10,7 +10,7 @@ export type Col = {
   field: string;
   header: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  body?: ReactNode | ((data: any, options: ColumnBodyOptions) => ReactNode);
+  body?: FC<ActionsProps>;
   sortable?: boolean;
 };
 

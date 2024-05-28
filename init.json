@@ -1,5 +1,8 @@
 {
-  "data": {
-    "values": "{\"id\":1,\"n\":\"Alan Wake\",\"c\":[\"TPS\",\"Adventure\",\"Horror\"],\"id\":1,\"n\":\"Jason Bourne\",\"c\":[\"Movie\",\"Thriller\",\"Spy\"],\"id\":\"1\",\"n\":\"Bruce Wayne\",\"c\":[\"Batman\",\"Philanthropist\",\"Orphan\"]}"
-  }
+  "data": [
+    {
+      "values": "[{\"id\":\"1\",\"n\":\"Alan Wake\",\"c\":[\"TPS\",\"Adventure\",\"Horror\"]},{\"id\":\"1\",\"n\":\"Jason Bourne\",\"c\":[\"Movie\",\"Thriller\",\"Spy\"]},{\"id\":\"1\",\"n\":\"Bruce Waynesss\",\"c\":[\"Batman\",\"Philanthropist\",\"Orphan\"]}]",
+      "id": "1"
+    }
+  ]
 }

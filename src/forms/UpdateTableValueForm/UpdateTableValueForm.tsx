@@ -1,23 +1,26 @@
 import { FC } from 'react';
 import { Form, Formik, FormikProps } from 'formik';
 import { Button } from 'primereact/button';
-import { useDispatch, useSelector } from 'react-redux';
 import { Init, UpdateTableValueFormProps } from './UpdateTableValueForm.types';
 import { InputText } from 'primereact/inputtext';
 import { MultiSelect } from 'primereact/multiselect';
 import { options } from './UpdateTableValueForm.options';
-import { RootState } from '../../store';
-import { updateData } from '../../store/commonSlice';
 import { updateTableValueSchema } from './UpdateTableValueForm.schema';
 import { FormError } from '../../components';
+import { dataApi } from '../../store/data.api';
 
-export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, closeModal }) => {
-  const dispatch = useDispatch();
-  const data = useSelector((state: RootState) => state.common.data);
+export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
+  init,
+  name,
+  id,
+  data,
+  closeModal,
+}) => {
+  const [updateData] = dataApi.useUpdateDataMutation();
 
-  const onFormSubmit = (values: Init) => {
+  const onFormSubmit = async (values: Init) => {
     const newData = data.map((item) => {
-      if (item.id !== id) {
+      if (item.n !== name) {
         return item;
       }
       return {
@@ -26,8 +29,11 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, 
       };
     });
 
-    dispatch(updateData(newData));
-
+    try {
+      await updateData({ values: JSON.stringify(newData) });
+    } catch (e) {
+      console.error(e);
+    }
     closeModal();
   };
 
@@ -44,7 +50,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, 
         >
           <div>
             <InputText
-              id="name"
+              id="n"
               className="w-full md:w-full mb-4"
               value={values['n']}
               onChange={handleChange}
@@ -55,7 +61,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({ init, id, 
             <FormError text={errors.n} />
 
             <MultiSelect
-              id="category"
+              id="c"
               value={values['c']}
               onChange={handleChange}
               options={options}
