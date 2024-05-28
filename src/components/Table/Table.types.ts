@@ -9,7 +9,6 @@ export type TableProps = {
 export type Col = {
   field: string;
   header: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   body?: FC<ActionsProps>;
   sortable?: boolean;
 };

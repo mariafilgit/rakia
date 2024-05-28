@@ -1,10 +1,9 @@
-import { FC } from 'react';
+import { FC, useMemo } from 'react';
 import { Form, Formik, FormikProps } from 'formik';
 import { Button } from 'primereact/button';
 import { Init, UpdateTableValueFormProps } from './UpdateTableValueForm.types';
 import { InputText } from 'primereact/inputtext';
 import { MultiSelect } from 'primereact/multiselect';
-import { options } from './UpdateTableValueForm.options';
 import { updateTableValueSchema } from './UpdateTableValueForm.schema';
 import { FormError } from '../../components';
 import { dataApi } from '../../store/data.api';
@@ -38,6 +37,28 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
     }
     closeModal();
   };
+
+  const options = useMemo(() => {
+    if (!data) {
+      return [];
+    }
+    const res = data.reduce(
+      (acc, cur) => {
+        return Array.from(
+          new Set([
+            ...acc,
+            ...cur.c.map((item) => ({
+              name: item,
+              value: item,
+            })),
+          ])
+        );
+      },
+      [] as { name: string; value: string }[]
+    );
+
+    return res;
+  }, [data]);
 
   return (
     <Formik
