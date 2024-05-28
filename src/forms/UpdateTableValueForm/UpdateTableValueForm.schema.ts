@@ -1,6 +1,6 @@
-import * as Yup from 'yup';
+import { string, array, object } from 'yup';
 
-export const updateTableValueSchema = Yup.object().shape({
-  n: Yup.string().min(10).required(),
-  c: Yup.array().of(Yup.string()),
+export const updateTableValueSchema = object().shape({
+  n: string().min(10).required(),
+  c: array().of(string()),
 });
