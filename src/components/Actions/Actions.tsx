@@ -5,6 +5,7 @@ import { Modal } from './Modal/Modal';
 import { UpdateTableValueForm } from '../../forms';
 import { DataDto } from '../../types';
 import { dataApi } from '../../store/data.api';
+import { transformDataToString } from '../../helpers/transformDataToString';
 
 export const Actions: FC<ActionsProps> = ({ n, id }) => {
   const [getVals, { data }] = dataApi.useLazyGetDataQuery();
@@ -35,11 +36,10 @@ export const Actions: FC<ActionsProps> = ({ n, id }) => {
   };
 
   const onDelete = async () => {
-    const newData = data?.filter((item) => item.n !== n);
+    const newData = data?.filter((item) => item.n !== n) ?? [];
 
     try {
-      let transformResult = JSON.stringify(newData).replace(/[}{]/g, '');
-      transformResult = transformResult.substring(1, transformResult.length - 1);
+      const transformResult = transformDataToString(newData);
       await deleteData({ values: `{${transformResult}}` });
     } catch (e) {
       console.error(e);

@@ -1,10 +1,10 @@
 import { FC, useEffect, useMemo } from 'react';
 import { Table } from '../components';
 import { cols } from './App.columns';
+import { dataApi } from '../store/data.api';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
-import { dataApi } from '../store/data.api';
 import '../index.css';
 
 export const App: FC = () => {

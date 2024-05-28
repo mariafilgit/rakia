@@ -7,6 +7,7 @@ import { MultiSelect } from 'primereact/multiselect';
 import { updateTableValueSchema } from './UpdateTableValueForm.schema';
 import { FormError } from '../../components';
 import { dataApi } from '../../store/data.api';
+import { transformDataToString } from '../../helpers/transformDataToString';
 
 export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
   init,
@@ -28,8 +29,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
     });
 
     try {
-      let transformResult = JSON.stringify(newData).replace(/[}{]/g, '');
-      transformResult = transformResult.substring(1, transformResult.length - 1);
+      const transformResult = transformDataToString(newData);
       await updateData({ values: `{${transformResult}}` });
     } catch (e) {
       console.error(e);
