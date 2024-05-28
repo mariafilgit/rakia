@@ -21,6 +21,9 @@ In this app you can see a simple table component. You can sort, update or delete
 - Install all dependencies
   `npm i`
 
+- To run json-server
+  `npm run server`
+
 - To run project
   `npm run dev`
 
