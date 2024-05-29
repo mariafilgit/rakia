@@ -24,14 +24,12 @@ export const App: FC = () => {
   }, []);
 
   const values = useMemo(() => {
-    if (!data) {
-      return [];
-    }
-
-    return data.map((item) => ({
-      ...item,
-      c: item.c.join(', '),
-    }));
+    return data
+      ? data.map((item) => ({
+          ...item,
+          c: item.c.join(', '),
+        }))
+      : [];
   }, [data]);
 
   return (

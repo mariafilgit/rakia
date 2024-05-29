@@ -74,7 +74,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
             <InputText
               id="n"
               className="w-full md:w-full mb-4"
-              value={values['n']}
+              value={values.n}
               onChange={handleChange}
               type={'text'}
               required
@@ -84,7 +84,7 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
 
             <MultiSelect
               id="c"
-              value={values['c']}
+              value={values.c}
               onChange={handleChange}
               options={options}
               optionLabel="name"
@@ -94,14 +94,14 @@ export const UpdateTableValueForm: FC<UpdateTableValueFormProps> = ({
             />
             <FormError text={errors.c?.toString()} />
 
-            <footer className="flex float-end pt-3">
+            <div className="flex float-end pt-3">
               <Button
                 className="px-20"
                 type="submit"
               >
                 Submit
               </Button>
-            </footer>
+            </div>
           </div>
         </Form>
       )}

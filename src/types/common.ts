@@ -1,5 +1,5 @@
 export interface CatalogDTO {
-  id: number | string;
+  id: string;
   n: string;
   c: string[];
 }

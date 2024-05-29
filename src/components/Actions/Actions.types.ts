@@ -1,4 +1,4 @@
 export type ActionsProps = {
-  id: number | string;
+  id: string;
   n: string;
 };

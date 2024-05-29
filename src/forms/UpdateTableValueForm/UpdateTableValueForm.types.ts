@@ -2,7 +2,7 @@ import { CatalogDTO } from '../../types';
 
 export type UpdateTableValueFormProps = {
   init: Init;
-  id: number | string;
+  id: string;
   name: string;
   closeModal: () => void;
   data: CatalogDTO[];
